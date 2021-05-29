@@ -1,9 +1,10 @@
 import React from 'react';
 import {BrowserRouter, Route, Switch} from 'react-router-dom'; 
 import { LinkContainer } from 'react-router-bootstrap'; // It wraps the nav.link tags to keep the styling and keeping the funcionality of the Links from react-router-dom
-import Navbar from 'react-bootstrap/Navbar'
-import Container from 'react-bootstrap/Container'
-import Nav from 'react-bootstrap/Nav'
+import Navbar from 'react-bootstrap/Navbar';
+import Container from 'react-bootstrap/Container';
+import Nav from 'react-bootstrap/Nav';
+import Show from './show/Show';
 
 const Navigation = () => {
     return (
@@ -33,8 +34,7 @@ const Navigation = () => {
                                     <Route path="/edit">
                                         
                                     </Route>
-                                    <Route path="/show">
-                                        
+                                    <Route path="/show" component={Show}>
                                     </Route>
                                     <Route path="/delete">
                                         
