@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import Table from './TableShow'
 
 
 const Show = () => {
@@ -7,18 +8,15 @@ const Show = () => {
         fetch("http://192.168.100.22:3001/show")
             .then((response) => response.json())
             .then((data  => {
-                setData(data)
-                console.log(data[0].name);
+                setData(data);
             }))
             .catch((err) => console.error(err))
     }, [])
 
     return (
-        <>
-            <h2>Show!!</h2>
-            <p>{data[0].name}</p>
-        </>
-    )
+        <Table data={data}/>
+    );
+        
 }
 
 export default Show;
