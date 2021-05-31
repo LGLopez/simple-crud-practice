@@ -26,7 +26,10 @@ const Insert = () => {
         })
         .then(res => res.json())
         .then(res => {
-            setJokeAdded(res.idJoke !== undefined ? true : false)
+            setJokeAdded(res.idJoke !== undefined ? true : false);
+            setNameJoke('');
+            setUser('');
+            setJoke('');
         })
         .catch(err => console.log(err))
     }
@@ -39,15 +42,15 @@ const Insert = () => {
             <Form>
                 <Form.Group controlId="formNameJoke">
                     <Form.Label>Name of the Joke</Form.Label>
-                    <Form.Control type="text" placeholder="Joke's name" onChange={onNameChange}/>
+                    <Form.Control type="text" placeholder="Joke's name" onChange={onNameChange} value={nameJoke}/>
                 </Form.Group>
                 <Form.Group controlId="formJoke">
                     <Form.Label>Joke</Form.Label>
-                    <Form.Control as="textarea" rows={3} onChange={onJokeChange}/>
+                    <Form.Control as="textarea" rows={3} onChange={onJokeChange} value={joke}/>
                 </Form.Group>
                 <Form.Group controlId="formUser">
                     <Form.Label>Name of the user</Form.Label>
-                    <Form.Control type="text" placeholder="Username" onChange={onUserChange}/>
+                    <Form.Control type="text" placeholder="Username" onChange={onUserChange} value={user}/>
                 </Form.Group>
             </Form>
             <Button variant="secondary" type="submit" onClick={ onSubmitJoke }>Add joke</Button>
