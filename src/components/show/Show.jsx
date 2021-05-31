@@ -4,16 +4,18 @@ import Table from 'react-bootstrap/Table';
 
 const Show = () => {
     const [data, setData] = useState([]);
+    const [hasError, setHasError] = useState(false);
+
     useEffect(() => {
         fetch("http://192.168.100.22:3001/show")
             .then((response) => response.json())
             .then((data  => {
                 setData(data);
             }))
-            .catch((err) => console.error(err))
+            .catch((err) => setHasError(true))
     }, [])
 
-    return !data.length ? <h2>Loading...</h2> : (
+    return hasError ? <h2>Error</h2> : !data.length ? <h2>Loading...</h2> :  (
         <React.Fragment>
             <h2>Bad Jokes!!</h2>
             <Table striped bordered hover variant="dark">

@@ -52,15 +52,11 @@ class App extends Component {
         <div>
           <Container>
             <Switch>
-              <Route path="/insert">
-                <Insert />     
-              </Route>
+              <Route path="/insert" component={Insert}></Route>
               <Route path="/edit">
                 <Edit />
               </Route>
-              <Route path="/show">
-                <Show jokes={this.state.jokes}/>
-              </Route>
+              <Route path="/show" component={Show}></Route>
               <Route path="/delete">
                 <Del />
               </Route>
@@ -73,40 +69,3 @@ class App extends Component {
 }
 
 export default App;
-
-
-<Navbar bg="dark" variant="dark">
-  <Container>
-    <Navbar.Brand>Simple Crud</Navbar.Brand>
-      <Router>
-          <Nav className="me-auto">
-              <LinkContainer to="/insert">
-                  <Nav.Link>Insert data</Nav.Link>
-              </LinkContainer>
-              <LinkContainer to="/edit">
-                  <Nav.Link>Edit data</Nav.Link>
-              </LinkContainer>
-              <LinkContainer to="/show">
-                  <Nav.Link>Show data</Nav.Link>
-              </LinkContainer>
-              <LinkContainer to="/delete">
-                  <Nav.Link>Delete data</Nav.Link>
-              </LinkContainer>
-          </Nav>
-              <Switch>
-                  <Route path="/insert">
-                          
-                  </Route>
-                  <Route path="/edit">
-                      
-                  </Route>
-                  <Route path="/show" component={Show}>
-                    
-                  </Route>
-                  <Route path="/delete">
-                      
-                  </Route>
-              </Switch>
-      </Router>
-  </Container>
-</Navbar>
