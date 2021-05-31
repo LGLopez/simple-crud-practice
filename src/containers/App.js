@@ -101,7 +101,8 @@ export default App;
                       
                   </Route>
                   <Route path="/show" component={Show}>
-                </Route>
+                    
+                  </Route>
                   <Route path="/delete">
                       
                   </Route>
