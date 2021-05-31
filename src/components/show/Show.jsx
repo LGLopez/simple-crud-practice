@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import Table from 'react-bootstrap/Table';
+import Alert from 'react-bootstrap/Alert';
 
 
 const Show = () => {
@@ -15,7 +16,7 @@ const Show = () => {
             .catch((err) => setHasError(true))
     }, [])
 
-    return hasError ? <h2>Error</h2> : !data.length ? <h2>Loading...</h2> :  (
+    return !data.length ? <Alert variant="info">Loading...</Alert> :  hasError ? <Alert variant="error"></Alert>: (
         <React.Fragment>
             <h2>Bad Jokes!!</h2>
             <Table striped bordered hover variant="dark">

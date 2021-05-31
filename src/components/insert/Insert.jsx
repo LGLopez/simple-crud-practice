@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import Container from 'react-bootstrap/Container';
+import Button from 'react-bootstrap/Button'
 
 const Insert = () => {
     const [user, setUser] = useState("");
@@ -61,6 +62,7 @@ const Insert = () => {
                 </div>
             </fieldset>
             <div className="">
+                <Button variant="secondary" type="submit" onClick={ onSubmitJoke }>Add joke</Button>
                 <input 
                     onClick={ onSubmitJoke }
                     className="b ph3 pv2 input-reset ba b--black bg-transparent grow pointer f6 dib" 
