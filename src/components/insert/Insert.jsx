@@ -1,11 +1,14 @@
 import React, {useState} from 'react';
 import Container from 'react-bootstrap/Container';
-import Button from 'react-bootstrap/Button'
+import Button from 'react-bootstrap/Button';
+import Form from 'react-bootstrap/Form';
+import Alert from 'react-bootstrap/Alert';
 
 const Insert = () => {
     const [user, setUser] = useState("");
     const [joke, setJoke] = useState("");
     const [nameJoke, setNameJoke] = useState("");
+    const [jokeAdded, setJokeAdded] = useState(false);
 
     const onNameChange = (event) => { setNameJoke(event.target.value)};
     const onJokeChange = (event) => { setJoke(event.target.value)};
@@ -22,54 +25,33 @@ const Insert = () => {
             })
         })
         .then(res => res.json())
-        .then(res => console.log(res.data))
+        .then(res => {
+            setJokeAdded(res.idJoke !== undefined ? true : false)
+        })
         .catch(err => console.log(err))
     }
 
     return (
         <Container>
-            <fieldset id="sign_up" className="ba b--transparent ph0 mh0" >
-                <legend className="f1 fw6 ph0 mh0">Insert Joke</legend>
-                <div className="mt3">
-                    <label className="db fw6 lh-copy f6" htmlFor="name">Name of the Joke</label>
-                    <input 
-                        className="pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100" 
-                        type="text" 
-                        name="name" 
-                        id="name" 
-                        onChange = { onNameChange }
-                    />
-                </div>
-                <div className="mt3">
-                    <label className="db fw6 lh-copy f6" htmlFor="name">Joke</label>
-                    <input 
-                        className="pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100" 
-                        type="text" 
-                        name="name" 
-                        id="name" 
-                        onChange = { onJokeChange }
-                    />
-                </div>
-                <div className="mt3">
-                    <label className="db fw6 lh-copy f6" htmlFor="name">Name of the user</label>
-                    <input 
-                        className="pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100" 
-                        type="text" 
-                        name="name" 
-                        id="name" 
-                        onChange = { onUserChange }
-                    />
-                </div>
-            </fieldset>
-            <div className="">
-                <Button variant="secondary" type="submit" onClick={ onSubmitJoke }>Add joke</Button>
-                <input 
-                    onClick={ onSubmitJoke }
-                    className="b ph3 pv2 input-reset ba b--black bg-transparent grow pointer f6 dib" 
-                    type="submit" 
-                    value="Add joke" 
-                    />
-            </div>
+            <br/>
+                <h2>Add your own joke</h2>
+            <hr/>
+            <Form>
+                <Form.Group controlId="formNameJoke">
+                    <Form.Label>Name of the Joke</Form.Label>
+                    <Form.Control type="text" placeholder="Joke's name" onChange={onNameChange}/>
+                </Form.Group>
+                <Form.Group controlId="formJoke">
+                    <Form.Label>Joke</Form.Label>
+                    <Form.Control as="textarea" rows={3} onChange={onJokeChange}/>
+                </Form.Group>
+                <Form.Group controlId="formUser">
+                    <Form.Label>Name of the user</Form.Label>
+                    <Form.Control type="text" placeholder="Username" onChange={onUserChange}/>
+                </Form.Group>
+            </Form>
+            <Button variant="secondary" type="submit" onClick={ onSubmitJoke }>Add joke</Button>
+            {jokeAdded?<Alert variant="success" onClose={() =>  setJokeAdded(false)} dismissible>Joke added successfully</Alert>:<p></p>}
         </Container>
     )
 }

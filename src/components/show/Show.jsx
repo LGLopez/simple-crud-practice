@@ -18,7 +18,9 @@ const Show = () => {
 
     return !data.length ? <Alert variant="info">Loading...</Alert> :  hasError ? <Alert variant="error"></Alert>: (
         <React.Fragment>
-            <h2>Bad Jokes!!</h2>
+            <br/>
+                <h2>Bad Jokes!!</h2>
+            <hr/>
             <Table striped bordered hover variant="dark">
                 <thead>
                     <tr>
