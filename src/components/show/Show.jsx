@@ -8,7 +8,7 @@ const Show = () => {
     const [hasError, setHasError] = useState(false);
 
     useEffect(() => {
-        fetch("http://192.168.100.22:3001/show")
+        fetch("http://192.168.100.5:3001/show")
             .then((response) => response.json())
             .then((data  => {
                 setData(data);
@@ -16,7 +16,7 @@ const Show = () => {
             .catch((err) => setHasError(true))
     }, [])
 
-    return !data.length ? <Alert variant="info">Loading...</Alert> :  hasError ? <Alert variant="error"></Alert>: (
+    return !data.length ? <Alert variant="info">Loading...</Alert> :  hasError ? <Alert variant="error">Error...</Alert>: (
         <React.Fragment>
             <br/>
                 <h2>Bad Jokes!!</h2>

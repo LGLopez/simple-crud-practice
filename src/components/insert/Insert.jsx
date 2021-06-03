@@ -15,7 +15,7 @@ const Insert = () => {
     const onUserChange = (event) => { setUser(event.target.value)};
 
     const onSubmitJoke = (event) => {
-        fetch("http://192.168.100.22:3001/insert/data", {
+        fetch("http://192.168.100.5:3001/insert/data", {
             method: 'put',
             headers: { 'content-Type': 'application/json' },
             body: JSON.stringify({
